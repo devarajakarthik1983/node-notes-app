@@ -45,11 +45,15 @@ if(duplicateNotes.length === 0){
 };
 
  var getAll = ()=>{
-   console.log('Getting all the notes');
+   var notes = fetchNotes();
+   return notes;
  }
 
  var getTitle =(title)=>{
-   console.log('Getting the title ' , title);
+   var notes = fetchNotes();
+   var printNote = notes.filter((note)=> note.title === title);
+   return printNote;
+
  }
 
 var removeTitle = (title)=>{

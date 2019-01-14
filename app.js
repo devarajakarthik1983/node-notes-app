@@ -20,9 +20,21 @@ if(note) {
 }
 
 } else if(command === 'list') {
-  notes.getAll();
+  var allNotes = notes.getAll();
+  console.log('Following are  the notes: \n');
+  allNotes.forEach((note)=>{
+
+    console.log(`Note Title: ${note.title} and Body: ${note.body} \n `);
+  })
+
 } else if(command === 'read'){
-  notes.getTitle(argv.title);
+ var printItem = notes.getTitle(argv.title);
+ if(printItem.length>0){
+   console.log(`Notes: with Title: ${printItem[0].title} and Body: ${printItem[0].body}`);
+ }else {
+   console.log('Unable to fetch notes');
+ }
+
 } else if (command === 'remove'){
   var message = notes.removeTitle(argv.title);
   console.log(message);
